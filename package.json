@@ -1,0 +1,36 @@
+{
+  "name": "generator-stack-node",
+  "version": "1.0.0",
+  "description": "Stack generator boilerplate of API for NodeJs",
+  "keywords": [
+    "babel",
+    "node",
+    "yeoman"
+  ],
+  "homepage": "http://www.guiigos.com",
+  "license": "MIT",
+  "author": {
+    "name": "Guilherme Alves",
+    "email": "guiigos.alves@gmail.com"
+  },
+  "files": [
+    "app"
+  ],
+  "main": "app/index.js",
+  "scripts": {
+    "test": "mocha --bail --reporter spec --slow 5000 ./test/index.spec.js"
+  },
+  "dependencies": {
+    "chalk": "2.3.0",
+    "figlet": "1.2.0",
+    "remove-accents": "0.4.2",
+    "yeoman-generator": "2.0.2",
+    "yosay": "2.0.1"
+  },
+  "devDependencies": {
+    "glob": "^7.1.2",
+    "mocha": "5.0.0",
+    "yeoman-assert": "^3.1.0",
+    "yeoman-test": "^1.7.0"
+  }
+}

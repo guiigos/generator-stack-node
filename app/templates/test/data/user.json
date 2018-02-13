@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Administrador",
+    "username": "administrador",
+    "password": "admin@123",
+    "email": "administrador@gmail.com",
+    "admin": true
+  },
+  {
+    "name": "Guilherme Alves",
+    "username": "guiigos",
+    "password": "gui@123",
+    "email": "guilherme.alves@gmail.com",
+    "admin": false
+  }
+]

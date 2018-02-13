@@ -1,0 +1,8 @@
+# folders
+node_modules/
+.temp/
+
+# files
+*.log
+*.DS_Store
+package-lock.json

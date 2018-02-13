@@ -1,0 +1,106 @@
+{
+  "name": "<%= folder %>",
+  "version": "0.0.1",
+  "description": "<%= description %>",
+  "homepage": "<%= homepage %>",
+  "author": {
+    "name": "<%= author %>",
+    "email": "<%= email %>"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "prepush": "npm run test:lint",
+    "start": "gulp build",
+    "start:dev": "gulp dev",
+    "start:pro": "gulp pro",
+    "test": "npm run test:lint && npm run test:coverage",
+    "test:coverage": "nyc npm run test:tdd",
+    "test:lint": "eslint src",
+    "test:tdd": "mocha --opts ./test/mocha.opts",
+    "test:tdd:watch": "npm run test:tdd -- --watch ./test"
+  },
+  "babel": {
+    "comments": false,
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base"
+  },
+  "dependencies": {
+    "body-parser": "1.18.2",
+    "colors": "1.1.2",
+    "compression": "1.7.1",
+    "cors": "2.8.4",
+    "crypto-js": "3.1.9-1",
+    "debug": "3.1.0",
+    "express": "4.16.2",
+    "express-validator": "4.3.0",
+    "figlet": "1.2.0",
+    "http-status": "1.0.1",
+    "jsonwebtoken": "8.1.1",
+    "morgan": "1.9.0",
+    "passport": "0.4.0",
+    "passport-jwt": "3.0.1",
+    "pg": "7.4.1",
+    "raven": "2.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "chai": "4.1.2",
+    "chai-http": "3.0.0",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "gulp": "3.9.1",
+    "gulp-apidoc": "0.2.6",
+    "gulp-babel": "7.0.1",
+    "gulp-clean": "0.4.0",
+    "gulp-nodemon": "2.2.1",
+    "gulp-util": "3.0.8",
+    "husky": "0.14.3",
+    "mocha": "5.0.0",
+    "nyc": "11.4.1",
+    "run-sequence": "2.2.1"
+  },
+  "engines": {
+    "node": "~6.10.3",
+    "npm": "~3.10.10"
+  },
+  "apidoc": {
+    "name": "<%= name %>",
+    "title": "<%= description %>",
+    "template": {
+      "forceLanguage": "pt_br",
+      "withCompare": false,
+      "withGenerator": false
+    },
+    "header": {
+      "title": "General",
+      "filename": "README.md"
+    }
+  },
+  "eslintIgnore": [
+    "src/api/config/config.js"
+  ],
+  "nyc": {
+    "check-coverage": true,
+    "functions": 50,
+    "lines": 50,
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "report-dir": "./dist/temp",
+    "temp-directory": "./dist/temp/.nyc_output"
+  }
+}
