@@ -9,8 +9,8 @@
 [david-dm-url]: https://david-dm.org/guiigos/generator-stack-node
 [david-dm-dev-image]: https://david-dm.org/guiigos/generator-stack-node/dev-status.svg?style=flat-square
 [david-dm-dev-url]: https://david-dm.org/guiigos/generator-stack-node?type=dev
-[npm-image]: https://img.shields.io/badge/npm-1.0.0-blue.svg?maxAge=2592000&style=flat-square
-[npm-url]: ./
+[npm-image]: https://badge.fury.io/js/generator-stack-node.svg?style=flat-square
+[npm-url]: https://badge.fury.io/js/generator-stack-node
 
 > Stack boilerplate personal from API **NodeJs**.<br>
 > - [Overview](#overview)
