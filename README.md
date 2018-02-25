@@ -1,16 +1,16 @@
 # Generator Stack NodeJs
 [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies Status][david-dm-image]][david-dm-url] [![DevDependencies Status][david-dm-dev-image]][david-dm-dev-url] [![NPM Version][npm-image]][npm-url] 
 
-[travis-image]: https://travis-ci.org/guiigos/generator-stack-node.png?branch=master
+[travis-image]: https://img.shields.io/travis/guiigos/generator-stack-node/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/guiigos/generator-stack-node
-[coveralls-image]: https://coveralls.io/repos/github/guiigos/generator-stack-node/badge.svg?branch=master
+[coveralls-image]: https://img.shields.io/coveralls/github/guiigos/generator-stack-node/master.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/github/guiigos/generator-stack-node?branch=master
 [david-dm-image]: https://david-dm.org/guiigos/generator-stack-node/status.svg?style=flat-square
 [david-dm-url]: https://david-dm.org/guiigos/generator-stack-node
 [david-dm-dev-image]: https://david-dm.org/guiigos/generator-stack-node/dev-status.svg?style=flat-square
 [david-dm-dev-url]: https://david-dm.org/guiigos/generator-stack-node?type=dev
-[npm-image]: https://badge.fury.io/js/generator-stack-node.svg?style=flat-square
-[npm-url]: https://badge.fury.io/js/generator-stack-node
+[npm-image]: https://img.shields.io/npm/v/generator-stack-node.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/generator-stack-node
 
 > Stack boilerplate personal from API **NodeJs**.<br>
 > - [Overview](#overview)

@@ -1,6 +1,6 @@
 # <%= name %>
 
-[![SasAS](https://img.shields.io/badge/GuiigOs-generator--stack--node-ff69b4.svg)](https://github.com/guiigos/generator-stack-node)
+[![SasAS](https://img.shields.io/badge/GuiigOs-generator--stack--node-ff69b4.svg?style=flat-square)](https://github.com/guiigos/generator-stack-node)
 
 > Base project for API developments in **NodeJs**.
 > - [Usage](#usage)
