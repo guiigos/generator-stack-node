@@ -1,5 +1,7 @@
 # Generator Stack NodeJs
-[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies Status][david-dm-image]][david-dm-url] [![DevDependencies Status][david-dm-dev-image]][david-dm-dev-url] [![NPM Version][npm-image]][npm-url] 
+[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies Status][david-dm-image]][david-dm-url] [![DevDependencies Status][david-dm-dev-image]][david-dm-dev-url] 
+
+[![NPM][npm-image]][npm-url]
 
 [travis-image]: https://img.shields.io/travis/guiigos/generator-stack-node/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/guiigos/generator-stack-node
@@ -9,8 +11,8 @@
 [david-dm-url]: https://david-dm.org/guiigos/generator-stack-node
 [david-dm-dev-image]: https://david-dm.org/guiigos/generator-stack-node/dev-status.svg?style=flat-square
 [david-dm-dev-url]: https://david-dm.org/guiigos/generator-stack-node?type=dev
-[npm-image]: https://img.shields.io/npm/v/generator-stack-node.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/generator-stack-node
+[npm-image]: https://nodei.co/npm/generator-stack-node.png?downloads=true&downloadRank=true&stars=true
+[npm-url]: https://nodei.co/npm/generator-stack-node
 
 > Stack boilerplate personal from API **NodeJs**.<br>
 > - [Overview](#overview)
@@ -26,7 +28,17 @@
 
 ## Overview
 Generator using [Yeoman](http://yeoman.io).<br>
+
 The generator creates an express API model compiling the code with [Babel](https://babeljs.io/), comes with integration with [PostgreSql](https://github.com/brianc/node-postgres) database, token authentication with [Passport](https://github.com/jaredhanson/passport) using [JWT](https://github.com/themikenicholson/passport-jwt) and possibility of reporting errors by [Sentry](https://sentry.io/). It has a documentation generator using [apiDoc](http://apidocjs.com/). Contains lint tests using [esLint](https://eslint.org/), TDD tests using [Mocha](https://github.com/mochajs/mocha) and code coverage using [nyc](https://github.com/istanbuljs/nyc).
+
+### Generated Project Dependencies
+[![Dependencies Status][david-dm-dep-image]][david-dm-dep-url] [![DevDependencies Status][david-dm-dep-dev-image]][david-dm-dep-dev-url]
+
+[david-dm-dep-image]: https://david-dm.org/guiigos/stack-node-dependency/status.svg?style=flat-square
+[david-dm-dep-url]: https://david-dm.org/guiigos/stack-node-dependency
+[david-dm-dep-dev-image]: https://david-dm.org/guiigos/stack-node-dependency/dev-status.svg?style=flat-square
+[david-dm-dep-dev-url]: https://david-dm.org/guiigos/generator-stack-node?type=dev
+
 
 ## Installation
 Commands to install the tools to run the generator.
@@ -122,10 +134,19 @@ Procedures in the development of the generator.
 Run project in development mode.
 
 ```bash
+# start submodules
+$ git submodule init
+
+# populating the submodule
+$ git submodule update
+
 # link package npm
 $ npm link
 
-# rotate generator
+# create a tarball from a package
+$ npm pack
+
+# run generator
 $ yo stack-node <options>
 ```
 

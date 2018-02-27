@@ -77,6 +77,11 @@ module.exports = class extends yeoman {
   }
 
   initializing() {
+    if(!this.fs.exists(this.templatePath('../stack-node-dependency/package.json'))) {
+      this.log(`Dependency ${chalk.yellow('stack-node-dependency')} not found.`);
+      process.exit();
+    }
+
     this.log(yosay(`Hello, welcome to the generator of ${chalk.yellow('NodeJs API')} development environments.\n\n${this.params.author}\n${this.params.email}\n${this.params.homepage}`));
   }
 
@@ -154,26 +159,43 @@ module.exports = class extends yeoman {
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath('.*'),
-      this.destinationPath(),
-      {
-        globOptions: {
-          dot: true
-        }
-      }
-    );
+    this.fs.copyTpl(this.templatePath('src', '/**/*'), this.destinationPath('src'), this.params);
+    this.fs.copyTpl(this.templatePath('test', '/**/*'), this.destinationPath('test'), this.params);
+    this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.params);
+    this.fs.copy(this.templatePath('editorconfig'), this.destinationPath('.editorconfig'));
+    this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'));
+    this.fs.copy(this.templatePath('gulpfile.js'), this.destinationPath('gulpfile.js'));
 
-    this.fs.copyTpl(
-      this.templatePath(`**/*`),
-      this.destinationPath(),
-      this.params
-    );
+    this.fs.copyTpl(this.templatePath('../stack-node-dependency/package.json'), this.destinationPath('package.json'), this.params);
+
+    // this.fs.copy(
+    //   this.templatePath('.*'),
+    //   this.destinationPath(),
+    //   {
+    //     globOptions: {
+    //       dot: true
+    //     }
+    //   }
+    // );
+
+    // this.fs.copyTpl(
+    //   this.templatePath(`**/*`),
+    //   this.destinationPath(),
+    //   this.params,
+    //   {},
+    //   {
+    //     globOptions: {
+    //       ignore: "_*.*"
+    //     }
+    //   }
+    // );
   }
 
   install() {
     this.installDependencies({
       npm: true,
+      bower: false,
+      yarn: false,
       skipInstall: this.options['skip-install']
     });
   }

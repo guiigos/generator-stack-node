@@ -1,6 +1,6 @@
 {
   "name": "generator-stack-node",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Stack generator boilerplate of API for NodeJs",
   "keywords": [
     "babel",
@@ -17,6 +17,10 @@
     "app"
   ],
   "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guiigos/generator-stack-node"
+  },
   "scripts": {
     "test": "mocha --bail --reporter spec --slow 5000 ./test/index.spec.js",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
