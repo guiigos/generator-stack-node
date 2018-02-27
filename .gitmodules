@@ -1,0 +1,3 @@
+[submodule "app/generator-stack-node"]
+	path = app/generator-stack-node
+	url = https://github.com/guiigos/generator-stack-node.git
