@@ -16,6 +16,7 @@
 
 > Stack boilerplate personal from API **NodeJs**.<br>
 > - [Overview](#overview)
+>   - [Generated Project Dependencies](#generated-project-dependencies)
 > - [Installation](#installation)
 > - [Usage](#usage)
 >   - [Options](#options)
