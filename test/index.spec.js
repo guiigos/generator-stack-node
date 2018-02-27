@@ -26,7 +26,7 @@ describe('generator', () => {
   before((done) => {
     glob(`${pathApp}/templates/**/*`, { dot: true }, (error, res) => {
       if (error) done(error);
-      expected = res.map(element => element.replace('app/templates', `.temp/${project.path}`));
+      expected = res.map(element => element.replace('app/templates', `.temp/${project.path}`).replace('editorconfig', '.editorconfig').replace('gitignore', '.gitignore'));
       done();
     });
   });
