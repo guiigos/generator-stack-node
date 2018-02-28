@@ -24,11 +24,24 @@ let project = {
 describe('generator', () => {
 
   before((done) => {
-    glob(`${pathApp}/templates/**/*`, { dot: true }, (error, res) => {
-      if (error) done(error);
-      expected = res.map(element => element.replace('app/templates', `.temp/${project.path}`).replace('editorconfig', '.editorconfig').replace('gitignore', '.gitignore'));
-      done();
-    });
+    glob(`${pathApp}/templates/{package/package.json,src/**/*,test/**/*,util/*}`,
+      {
+        dot: true,
+        nodir: true
+      },
+      (error, res) => {
+        if (error) done(error);
+        expected = res.map((element) => {
+          element = element.replace('app/templates', `.temp/${project.path}`);
+          element = element.replace('util/gitignore', '.gitignore');
+          element = element.replace('util/editorconfig', '.editorconfig');
+          element = element.replace('package/package.json', 'package.json');
+
+          return element;
+        });
+
+        done();
+      });
   });
 
   it('can be imported without blowing up', () => {
@@ -43,7 +56,7 @@ describe('generator', () => {
     delete param.path;
 
     helpers.testDirectory(pathTemp, (error) => {
-      if(error) done(error);
+      if (error) done(error);
 
       helpers.run(pathApp)
         .inDir(pathTemp)

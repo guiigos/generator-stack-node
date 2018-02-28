@@ -1,5 +1,6 @@
 # folders
 node_modules/
+.nyc_output/
 .temp/
 
 # files

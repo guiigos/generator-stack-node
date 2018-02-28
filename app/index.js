@@ -77,7 +77,7 @@ module.exports = class extends yeoman {
   }
 
   initializing() {
-    if(!this.fs.exists(this.templatePath('../stack-node-dependency/package.json'))) {
+    if (!this.fs.exists(this.templatePath('package/package.json'))) {
       this.log(`Dependency ${chalk.yellow('stack-node-dependency')} not found.`);
       process.exit();
     }
@@ -159,36 +159,44 @@ module.exports = class extends yeoman {
   }
 
   writing() {
-    this.fs.copyTpl(this.templatePath('src', '/**/*'), this.destinationPath('src'), this.params);
-    this.fs.copyTpl(this.templatePath('test', '/**/*'), this.destinationPath('test'), this.params);
-    this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.params);
-    this.fs.copy(this.templatePath('editorconfig'), this.destinationPath('.editorconfig'));
-    this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'));
-    this.fs.copy(this.templatePath('gulpfile.js'), this.destinationPath('gulpfile.js'));
+    this.fs.copyTpl(
+      this.templatePath('package', 'package.json'),
+      this.destinationPath('package.json'),
+      this.params
+    );
 
-    this.fs.copyTpl(this.templatePath('../stack-node-dependency/package.json'), this.destinationPath('package.json'), this.params);
+    this.fs.copyTpl(
+      this.templatePath('src', '**', '*'),
+      this.destinationPath('src'),
+      this.params
+    );
 
-    // this.fs.copy(
-    //   this.templatePath('.*'),
-    //   this.destinationPath(),
-    //   {
-    //     globOptions: {
-    //       dot: true
-    //     }
-    //   }
-    // );
+    this.fs.copyTpl(
+      this.templatePath('test', '**', '*'),
+      this.destinationPath('test'),
+      this.params
+    );
 
-    // this.fs.copyTpl(
-    //   this.templatePath(`**/*`),
-    //   this.destinationPath(),
-    //   this.params,
-    //   {},
-    //   {
-    //     globOptions: {
-    //       ignore: "_*.*"
-    //     }
-    //   }
-    // );
+    this.fs.copy(
+      this.templatePath('util', 'editorconfig'),
+      this.destinationPath('.editorconfig')
+    );
+
+    this.fs.copy(
+      this.templatePath('util', 'gitignore'),
+      this.destinationPath('.gitignore')
+    );
+
+    this.fs.copyTpl(
+      this.templatePath(`*`),
+      this.destinationPath(),
+      this.params,
+      {
+        globOptions: {
+          dot: true
+        }
+      }
+    );
   }
 
   install() {
