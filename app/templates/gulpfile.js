@@ -7,11 +7,45 @@ const apidoc = require('gulp-apidoc');
 const nodemon = require('gulp-nodemon');
 const runSequence = require('run-sequence');
 
+const pgtools = require('pgtools');
+const dev = require('./src/api/config/env/development.env');
+const pro = require('./src/api/config/env/production.env');
+const tes = require('./src/api/config/env/test.env');
+
 var nodemonConfig;
 
 gulp.task('default', () => {
   util.log(util.colors.yellow('gulp dev'), util.colors.magenta('generates the whole routine of homologation.'));
   util.log(util.colors.yellow('gulp pro'), util.colors.magenta('generates the whole routine of production.'));
+  util.log(util.colors.yellow('gulp prepare'), util.colors.magenta('prepare all databases.'));
+});
+
+gulp.task('prepare', (done) => {
+  const devName = dev.database.database;
+  const proName = pro.database.database;
+  const tesName = tes.database.database;
+
+  delete dev.database.database;
+  delete pro.database.database;
+  delete tes.database.database;
+  delete dev.database.max;
+  delete pro.database.max;
+  delete tes.database.max;
+  delete dev.database.idleTimeoutMillis;
+  delete pro.database.idleTimeoutMillis;
+  delete tes.database.idleTimeoutMillis;
+
+  const promiseDev = pgtools.createdb(dev.database, devName);
+  const promisePro = pgtools.createdb(pro.database, proName);
+  const promiseTes = pgtools.createdb(tes.database, tesName);
+
+  Promise
+    .all([promiseDev, promisePro, promiseTes])
+    .then(responses => done())
+    .catch(error => {
+      util.log(util.colors.red(error.message));
+      done();
+    });
 });
 
 gulp.task('dev', (done) => {

@@ -8,7 +8,6 @@
 >   - [Dependencies](#dependencies)
 >   - [Run](#run)
 >   - [Tests](#tests)
-> - [Database](#database)
 
 ## Usage
 ### Environment
@@ -29,6 +28,9 @@ Compile project
 # commands
 $ gulp
 $ gulp --tasks
+
+# create database
+$ gulp prepare
 
 # production
 $ npm run start:pro
@@ -59,17 +61,4 @@ $ npm run test:coverage
 
 # all tests
 $ npm test
-```
-
-## Database
-```sql
-CREATE TABLE users
-(
-	id SERIAL PRIMARY KEY,
-	name TEXT,
-	username TEXT,
-	password TEXT,
-	email TEXT,
-	admin BOOLEAN
-);
 ```

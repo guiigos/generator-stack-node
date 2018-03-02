@@ -1,6 +1,6 @@
 {
   "name": "generator-stack-node",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Stack generator boilerplate of API for NodeJs",
   "keywords": [
     "babel",

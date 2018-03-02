@@ -23,6 +23,9 @@ const token = passport(CONFIG.token.secret);
 // database
 global.db = global.db || database(CONFIG.database).connect();
 
+// prepare database
+database().prepare(global.db);
+
 // server
 const app = express();
 app.set('config', CONFIG);

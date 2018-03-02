@@ -64,14 +64,19 @@ $ yo stack-node <options>
 The options that are not informed will be requested by the generator when initiating project.
 
 ```bash
-  -h,   --help          # Print the generator's options and usage
-        --skip-cache    # Do not remember prompt answers                    Default: false
-        --skip-install  # Do not automatically install dependencies         Default: false
-  -n,   --name          # What is the project name?
-  -d,   --description   # What is a short description for this project?
-  -a,   --author        # Who is the author of this project?
-  -e,   --email         # What is the email of the author of this project?
-  -h,   --homepage      # What is the project homepage?
+  -h,     --help          # Print the generator's options and usage
+          --skip-cache    # Do not remember prompt answers                                  Default: false
+          --skip-install  # Do not automatically install dependencies                       Default: false
+  -n,     --name          # What is the project name?
+  -d,     --description   # What is a short description for this project?
+  -a,     --author        # Who is the author of this project?
+  -e,     --email         # What is the email of the author of this project?
+  -h,     --homepage      # What is the project homepage?
+  -dbu,   --dbuser        # What is the connection user with postgres?
+  -dbp,   --dbpassword    # What is the access password for connection to postgres?
+  -dbh,   --dbhost        # What is the host of the database?
+  -dbp,   --dbport        # What is the database port?
+  -s,     --sentry        # If you have report sentry DNS to monitor errors in production.
 ```
 
 ## Directory
