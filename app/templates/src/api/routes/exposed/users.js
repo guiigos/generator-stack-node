@@ -177,13 +177,12 @@ export default () => {
         else {
           req.sanitize('id').toInt();
 
-          UserModel.getUser(req.params.id)
-            .then((data) => {
-              if (data) Handlers.success(req, res, data);
-              else Handlers.error(req, res);
-            })
-            .catch(exception => next(exception));
+          return UserModel.getUser(req.params.id);
         }
+      })
+      .then((data) => {
+        if (data) Handlers.success(req, res, data);
+        else Handlers.error(req, res);
       })
       .catch(exception => next(exception));
   }
@@ -342,27 +341,26 @@ export default () => {
           req.sanitize('password').crypto();
           req.sanitize('email').trim();
 
-          UserModel.postUser({
+          return UserModel.postUser({
             name: req.body.name,
             username: req.body.username,
             password: req.body.password,
             email: req.body.email,
             admin: req.body.admin,
-          })
-            .then((data) => {
-              if (data.rows === 0) {
-                const ret = [{
-                  location: 'body',
-                  param: 'username',
-                  msg: 'Username already exists',
-                  value: req.body.username,
-                }];
-
-                Handlers.validation(req, res, ret);
-              } else Handlers.success(req, res, data, httpstatus.CREATED);
-            })
-            .catch(exception => next(exception));
+          });
         }
+      })
+      .then((data) => {
+        if (data.rows === 0) {
+          const ret = [{
+            location: 'body',
+            param: 'username',
+            msg: 'Username already exists',
+            value: req.body.username,
+          }];
+
+          Handlers.validation(req, res, ret);
+        } else Handlers.success(req, res, data, httpstatus.CREATED);
       })
       .catch(exception => next(exception));
   }
@@ -514,19 +512,18 @@ export default () => {
           req.sanitize('password').crypto();
           req.sanitize('email').trim();
 
-          UserModel.putUser({
+          return UserModel.putUser({
             id: req.params.id,
             name: req.body.name,
             password: req.body.password,
             email: req.body.email,
             admin: req.body.admin,
-          })
-            .then((data) => {
-              if (data.rows === 0) Handlers.error(req, res);
-              else Handlers.success(req, res, data);
-            })
-            .catch(exception => next(exception));
+          });
         }
+      })
+      .then((data) => {
+        if (data.rows === 0) Handlers.error(req, res);
+        else Handlers.success(req, res, data);
       })
       .catch(exception => next(exception));
   }
@@ -625,13 +622,12 @@ export default () => {
         else {
           req.sanitize('id').toInt();
 
-          UserModel.deleteUser(req.params.id)
-            .then((data) => {
-              if (data.rows === 0) Handlers.error(req, res);
-              else Handlers.success(req, res, data, httpstatus.ACCEPTED);
-            })
-            .catch(exception => next(exception));
+          return UserModel.deleteUser(req.params.id);
         }
+      })
+      .then((data) => {
+        if (data.rows === 0) Handlers.error(req, res);
+        else Handlers.success(req, res, data, httpstatus.ACCEPTED);
       })
       .catch(exception => next(exception));
   }

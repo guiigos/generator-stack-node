@@ -88,19 +88,18 @@ export default (config) => {
           req.sanitize('password').trim();
           req.sanitize('password').crypto();
 
-          AccountModel.validAccess(req.body.username, req.body.password)
-            .then((payload) => {
-              if (payload) {
-                const options = { expiresIn: config.expire };
-
-                jwt.sign(payload, config.secret, options, (error, token) => {
-                  if (error) throw error;
-                  else Handlers.authSuccess(req, res, token);
-                });
-              } else Handlers.authFail(req, res);
-            })
-            .catch(exception => next(exception));
+          return AccountModel.validAccess(req.body.username, req.body.password)
         }
+      })
+      .then((payload) => {
+        if (payload) {
+          const options = { expiresIn: config.expire };
+
+          jwt.sign(payload, config.secret, options, (error, token) => {
+            if (error) throw error;
+            else Handlers.authSuccess(req, res, token);
+          });
+        } else Handlers.authFail(req, res);
       })
       .catch(exception => next(exception));
   }
